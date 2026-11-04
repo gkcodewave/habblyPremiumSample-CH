@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Habbly Plus</title>
-<meta name="description" content="Habbly Plus: a paid, direct-to-learner Habbly with a 10-hour lesson window, earned reward chests, a mystery box and Balloon Pop Duel. Prototype by Codewave for Habbly.">
+<meta name="description" content="Habbly Plus: a paid, direct-to-learner Habbly with a 10-minute lesson window, earned reward chests, a mystery box and Balloon Pop Duel. Prototype by Codewave for Habbly.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
@@ -234,14 +234,14 @@ table.t th{background:var(--g50);font-size:12px;letter-spacing:.07em;text-transf
 table.t tr:last-child td{border-bottom:0}
 .callout{background:var(--amber-l);border-radius:16px;padding:16px 18px;font-weight:700;color:#78350F;margin-top:16px}
 .loop{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
-.loop div{background:#fff;border:1px solid var(--g200);border-radius:16px;padding:14px;text-align:center}
-.loop div span{font-size:28px;display:block}.loop b{display:block;font-weight:900;margin:4px 0 2px}.loop small{color:#4B5563;font-size:13px}
+.loop > div{background:#fff;border:1px solid var(--g200);border-radius:16px;padding:14px;text-align:center}
+.loop > div > span{font-size:28px;display:block}.loop b{display:block;font-weight:900;margin:4px 0 2px}.loop small{color:#4B5563;font-size:13px}
 @media(max-width:860px){.loop{grid-template-columns:1fr 1fr}}
 footer{padding:30px 0 50px;color:var(--g500);font-size:13.5px;border-top:1px solid var(--g200)}
 
 .icn{display:inline-block;vertical-align:-3px;flex:0 0 auto}
-.tabs button{display:flex;align-items:center;justify-content:center;gap:6px}
-.loop div span{display:flex!important;justify-content:center;align-items:center;height:56px}
+.tabs button{display:flex;align-items:center;justify-content:center;gap:5px;white-space:nowrap;font-size:13.5px;padding:11px 4px}
+.loop > div > span{display:flex!important;justify-content:center;align-items:center;height:56px}
 .perks i{display:flex;justify-content:center}
 .res .ic{overflow:visible}
 .qbox{width:52px;display:grid;place-items:center;animation:wob 2.2s infinite}
@@ -308,6 +308,31 @@ footer{padding:30px 0 50px;color:var(--g500);font-size:13.5px;border-top:1px sol
 .odds{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:16px;position:relative;z-index:3}
 .odds span{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.1);border-radius:999px;padding:3px 9px 3px 4px;font-size:11.5px;font-weight:800}
 .odds .mini{width:20px;height:20px;border-radius:6px;display:grid;place-items:center}
+
+.lay > *:not(.stars):not(.bgl){position:relative;z-index:1}
+.stars{position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.stars i{position:absolute;border-radius:50%;background:#fff;opacity:.15;animation:twinkle 2.6s ease-in-out infinite}
+@keyframes twinkle{50%{opacity:.95;transform:scale(1.5)}}
+.bgl{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:0;opacity:.28}
+.bgl span{position:absolute;bottom:-90px;animation:riseB linear infinite}
+@keyframes riseB{0%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-450px) rotate(5deg)}100%{transform:translateY(-920px) rotate(-3deg)}}
+.home-in > *:not(.stars){animation:in .55s cubic-bezier(.2,.9,.3,1.1) both}
+.home-in > *:nth-child(3){animation-delay:.05s}.home-in > *:nth-child(4){animation-delay:.12s}.home-in > *:nth-child(5){animation-delay:.19s}.home-in > *:nth-child(6){animation-delay:.26s}.home-in > *:nth-child(7){animation-delay:.33s}.home-in > *:nth-child(8){animation-delay:.4s}.home-in > *:nth-child(9){animation-delay:.47s}.home-in > *:nth-child(10){animation-delay:.54s}
+.wtrack{position:relative;z-index:1;height:7px;border-radius:5px;background:rgba(0,0,0,.22);margin-top:10px;overflow:hidden}
+.wtrack i{display:block;height:100%;background:#fff;border-radius:5px;transition:width 1s linear;box-shadow:0 0 10px #fff}
+.window .t.tk{animation:tk .35s}
+@keyframes tk{0%{transform:scale(1.07)}100%{transform:none}}
+.window.urgent{background:linear-gradient(135deg,#EF4444,#DC2626 55%,#9F1239);animation:urg 1s infinite}
+@keyframes urg{8%{transform:translateX(-3px)}16%{transform:translateX(3px)}24%{transform:none}}
+.window.closed{filter:grayscale(.85) brightness(.8)}
+.streak div.on span{animation:pop .5s both}
+.streak div:nth-child(2) span{animation-delay:.12s}.streak div:nth-child(3) span{animation-delay:.24s}.streak div:nth-child(4) span{animation-delay:.36s}
+.duel .pl:last-child .a{animation:bob 1.6s ease-in-out infinite}
+.stars3{display:flex;justify-content:center;align-items:flex-end;gap:8px;margin:10px 0 0}
+.stars3 span{opacity:.18;filter:grayscale(1);transform:scale(.75);transition:all .45s cubic-bezier(.3,1.8,.5,1)}
+.stars3 span:nth-child(2){margin-bottom:12px}
+.stars3 span.on{opacity:1;filter:drop-shadow(0 0 10px rgba(253,224,71,.8));transform:scale(1.12)}
+.slot.ready .c3{animation:float 1.4s ease-in-out infinite}
 @media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;animation-iteration-count:1!important}}
 </style>
 </head>
@@ -322,16 +347,16 @@ footer{padding:30px 0 50px;color:var(--g500);font-size:13.5px;border-top:1px sol
   <div>
     <span class="eyebrow">Customer · Jonathan, founder of Habbly</span>
     <h1>Habbly today only sells to schools. <em>Habbly Plus</em> sells to every learner.</h1>
-    <p class="lead">One app, two doors. <b>School</b> keeps today's class code + PIN homework flow, unchanged. <b>Plus</b> is a paid subscription with Google, Apple or email sign-in. It wraps Habbly's real lessons in a reward loop: a 10-hour lesson window worth <b>+300 bonus points</b>, earned chests, a mystery box, and Balloon Pop Duel.</p>
+    <p class="lead">One app, two doors. <b>School</b> keeps today's class code + PIN homework flow, unchanged. <b>Plus</b> is a paid subscription with Google, Apple or email sign-in. It wraps Habbly's real lessons in a reward loop: a 10-minute lesson window worth <b>+300 bonus points</b>, earned chests, a mystery box, and Balloon Pop Duel.</p>
     <div class="who">
       <div><b>Customer</b><span>Jonathan, founder of Habbly</span></div>
       <div><b>Plus buyer</b><span>Parents of GCSE students, plus self-learners</span></div>
       <div><b>Already built in Habbly</b><span>Google / Apple / OTP login, BPD balloons, timer-zone points</span></div>
-      <div><b>New in Plus</b><span>Paywall, 10-hour window, chests, mystery box</span></div>
+      <div><b>New in Plus</b><span>Paywall, 10-minute window, chests, mystery box</span></div>
     </div>
     <div class="tryit"><b>Try it on the phone →</b><ol>
       <li>Open the <b>Habbly Plus</b> tab and sign in with any option</li>
-      <li>Play <b>Balloon Pop Duel</b> against Ana inside the 10-hour window</li>
+      <li>Play <b>Balloon Pop Duel</b> against Ana inside the 10-minute window</li>
       <li>Collect +300, then tap the chest to open it</li>
       <li>Beat Ana to unlock the <b>Mystery Box</b></li>
     </ol></div>
@@ -357,7 +382,7 @@ footer{padding:30px 0 50px;color:var(--g500);font-size:13.5px;border-top:1px sol
   <div class="sh"><span class="n">02</span><h2>The reward loop</h2></div>
   <p class="sub">Chests and timed windows are proven mobile-game mechanics. Here, every reward is <b>earned by learning</b>: none can be bought with money.</p>
   <div class="loop">
-    <div><span data-ic="hourglass"></span><b>10-hour window</b><small>A daily lesson unlocks. Finish it within 10 hours for +300 bonus points.</small></div>
+    <div><span data-ic="hourglass"></span><b>10-minute window</b><small>A daily lesson unlocks. Finish it within 10 minutes for +300 bonus points.</small></div>
     <div><span data-ic="balloonC"></span><b>Play the lesson</b><small>Real Habbly formats such as BPD, scored by the real timer zones.</small></div>
     <div><span data-ic="chestC"></span><b>Earn a chest</b><small>Gold for finishing inside the window, Silver if you finish late. Chests unlock on a timer.</small></div>
     <div><span data-ic="giftC"></span><b>Mystery box</b><small>Beat Ana (the ghost opponent) to unlock it. The possible contents are always shown.</small></div>
@@ -365,9 +390,9 @@ footer{padding:30px 0 50px;color:var(--g500);font-size:13.5px;border-top:1px sol
   </div>
   <div class="tscroll" style="margin-top:16px"><table class="t">
     <tr><th>Reward</th><th>How you earn it</th><th>What's inside (always disclosed)</th></tr>
-    <tr><td><b>Lesson window bonus</b></td><td>Finish the daily lesson within 10 h</td><td>+300 points (6 green-zone answers' worth: 6 × 50)</td></tr>
+    <tr><td><b>Lesson window bonus</b></td><td>Finish the daily lesson within 10 min</td><td>+300 points (6 green-zone answers' worth: 6 × 50)</td></tr>
     <tr><td><b>Gold chest</b></td><td>Finish inside the window</td><td>100–200 coins, plus 1 of: streak freeze / 30-min double points / new keyboard theme</td></tr>
-    <tr><td><b>Silver chest</b></td><td>Finish after the window closes</td><td>40–80 coins, with a 3-hour unlock timer</td></tr>
+    <tr><td><b>Silver chest</b></td><td>Finish after the window closes</td><td>40–80 coins, with a short unlock timer</td></tr>
     <tr><td><b>Mystery box</b></td><td>Win a Balloon Pop Duel against Ana</td><td>1 of 6 listed items, each shown with its odds</td></tr>
   </table></div>
 </section>
@@ -400,10 +425,10 @@ footer{padding:30px 0 50px;color:var(--g500);font-size:13.5px;border-top:1px sol
     <div class="panel money"><h3>For Habbly: better school numbers too</h3><ul class="clean"><li>The streak and window bring students back on days without homework.</li><li>More practice means better results, which is the strongest case at school renewal time.</li><li>"Your students can also use Plus at home" becomes a selling point.</li></ul></div>
     <div class="panel money"><h3>For Codewave</h3><ul class="clean"><li><b>Build:</b> the Plus tab, paywall, reward engine and chest UI (the logins already exist).</li><li><b>Ongoing:</b> a monthly retainer for seasonal events, new chests and A/B tests on price and rewards.</li><li><b>Reuse:</b> a learning-rewards engine we can offer other edtech clients.</li></ul></div>
   </div>
-  <div class="panel" style="margin-top:14px"><h3>What we'd measure in the first month (no guesses here, these get measured)</h3><p>Trial start rate from the Plus tab · trial → paid conversion · share of lessons finished inside the 10-hour window · day-7 return rate (Plus vs School-only students) · chest opens per active student.</p></div>
+  <div class="panel" style="margin-top:14px"><h3>What we'd measure in the first month (no guesses here, these get measured)</h3><p>Trial start rate from the Plus tab · trial → paid conversion · share of lessons finished inside the 10-minute window · day-7 return rate (Plus vs School-only students) · chest opens per active student.</p></div>
   <div class="grid2" style="margin-top:14px">
-    <div class="panel"><h3>How we found it</h3><p>Building Habbly's app with Jonathan, we saw that every login path except class code + PIN already exists in the code, and that formats like Balloon Pop Duel already feel like a game. The one thing missing is a way for families to pay and a reason to come back daily.</p></div>
-    <div class="panel"><h3>Next steps</h3><ul class="clean"><li>Week 1: agree the Plus design and reward table with Jonathan.</li><li>Week 2–3: build the paywall, reward engine and chest UI on the existing app.</li><li>Week 4: soft-launch to Habbly school families and measure trial → paid.</li></ul></div>
+    <div class="panel"><h3>How we found it</h3><p>Jonathan has already discussed a premium tier with us and wants it live as soon as possible. Building Habbly's app with Jonathan, we saw that every login path except class code + PIN already exists in the code, and that formats like Balloon Pop Duel already feel like a game. The one thing missing is a way for families to pay and a reason to come back daily.</p></div>
+    <div class="panel"><h3>Next steps: launch as soon as possible</h3><p>Premium is already on Jonathan's roadmap, and Jonathan wants it soon. This prototype is the starting point for that plan.</p><ul class="clean"><li><b>Week 1:</b> agree the Plus design and reward table with Jonathan.</li><li><b>Weeks 2–3:</b> build the paywall, reward engine and chest UI on the existing app and its sign-in.</li><li><b>Week 4:</b> soft-launch to families at Habbly schools, then measure trial → paid.</li></ul></div>
   </div>
 </section>
 </main>
@@ -412,10 +437,10 @@ footer{padding:30px 0 50px;color:var(--g500);font-size:13.5px;border-top:1px sol
 <script>
 (function(){
 var app = document.getElementById('app');
-var S = { coins:1240, points:0, streak:4, user:'', bpdWins:0, chestSlots:[{t:'silver',left:2*3600+14*60+9},null,null,null], deadline:Date.now()+(9*3600+41*60+12)*1000, mystery:false, ticker:null };
+var S = { coins:1240, points:0, streak:4, user:'', bpdWins:0, chestSlots:[{t:'silver',left:90},null,null,null], deadline:Date.now()+10*60*1000, mystery:false, ticker:null };
 function esc(s){return String(s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
 function $(id){return document.getElementById(id);}
-function fmt(sec){sec=Math.max(0,Math.floor(sec));var h=Math.floor(sec/3600),m=Math.floor(sec%3600/60),s=sec%60;return (h<10?'0':'')+h+':'+(m<10?'0':'')+m+':'+(s<10?'0':'')+s;}
+function fmt(sec){sec=Math.max(0,Math.floor(sec));var h=Math.floor(sec/3600),m=Math.floor(sec%3600/60),s=sec%60;return (h?(h<10?'0':'')+h+':':'')+(m<10?'0':'')+m+':'+(s<10?'0':'')+s;}
 function clearTick(){if(S.ticker){clearInterval(S.ticker);S.ticker=null;}}
 
 /* ---------- sound (WebAudio, no files) ---------- */
@@ -490,6 +515,13 @@ function flyCoins(fromEl,toId,n){
     c.animate([{transform:'translate(-50%,-50%)',opacity:1},{transform:'translate(calc(-50% + '+(Math.random()*90-45)+'px),calc(-50% - 50px))',opacity:1,offset:.35},{transform:'translate(calc(-50% + '+dx+'px),calc(-50% + '+dy+'px)) scale(.6)',opacity:.9}],{duration:850,delay:i*60,easing:'ease-in',fill:'backwards'}).onfinish=function(){c.remove();sCoin();var t=$(toId);if(t){t.classList.remove('bump');void t.offsetWidth;t.classList.add('bump');}};})(i);}
 }
 
+function stars(n){var s='<div class="stars">';for(var i=0;i<n;i++){var z=1+Math.random()*2.4;s+='<i style="left:'+(Math.random()*100)+'%;top:'+(Math.random()*100)+'%;width:'+z+'px;height:'+z+'px;animation-delay:'+(-Math.random()*3)+'s;animation-duration:'+(1.8+Math.random()*2.4)+'s"></i>';}return s+'</div>';}
+function bgBalloons(){var cs=['#EF4444','#8B5CF6','#0EA5E9','#22C55E','#F97316','#EC4899'],s='<div class="bgl">';for(var i=0;i<7;i++){s+='<span style="left:'+(4+i*14)+'%;animation-duration:'+(9+Math.random()*7)+'s;animation-delay:'+(-Math.random()*12)+'s">'+balloonSVG(34+Math.random()*26,cs[i%cs.length])+'</span>';}return s+'</div>';}
+function bumpEl(el){if(el&&el.animate)el.animate([{transform:'scale(1.5)'},{transform:'none'}],{duration:380,easing:'cubic-bezier(.3,1.6,.5,1)'});}
+function shakeScr(){var s=app.querySelector('.scr');if(s&&s.animate)s.animate([{transform:'translateX(-7px)'},{transform:'translateX(7px)'},{transform:'translateX(-3px)'},{transform:'none'}],{duration:300});}
+function buzz(ms){try{if(navigator.vibrate)navigator.vibrate(ms);}catch(e){}}
+app.addEventListener('pointerdown',function(e){var b=e.target.closest&&e.target.closest('.btn,.go,.slot,.mystery,.tabs button,.link,.upsell');if(!b)return;tone(620,.05,'sine',.05);buzz(8);});
+
 /* ---------- chest + gift box art (original SVG) ---------- */
 var CH={gold:{w1:'#A0612F',w2:'#6B3A1C',m1:'#FCD34D',m2:'#B45309',g:'#EF4444'},silver:{w1:'#7C6150',w2:'#4A3628',m1:'#F1F5F9',m2:'#64748B',g:'#38BDF8'},legend:{w1:'#7C3AED',w2:'#3B0764',m1:'#FDE68A',m2:'#B45309',g:'#22D3EE'}};
 function chestHTML(type,cls,w){
@@ -529,7 +561,7 @@ var ICONS={g:'<svg viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H
  a:'<svg viewBox="0 0 24 24" fill="#fff"><path d="M16.4 12.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8 1.6 0 2 .8 3.4.8 1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9 0 0-2.7-1-2.7-4.1zM13.9 5c.7-.9 1.2-2 1-3.2-1 0-2.3.7-3 1.6-.7.8-1.2 2-1.1 3.1 1.2.1 2.3-.6 3.1-1.5z"/></svg>'};
 function welcome(tab){
   clearTick(); tab=tab||'school';
-  app.innerHTML='<div class="scr pad">'
+  app.innerHTML='<div class="scr pad lay">'+bgBalloons()
    +'<div class="logo">h</div><div style="text-align:center;font-weight:900;font-size:24px;line-height:1.2">Welcome to Habbly</div>'
    +'<div style="text-align:center;color:#6B7280;font-weight:700;font-size:14px">Learn a language in short, timed games</div>'
    +'<div class="tabs"><span class="pill" id="pill" style="left:'+(tab==='school'?'4px':'50%')+'"></span><button id="tS" class="'+(tab==='school'?'on':'')+'">'+ic('school',17)+' School</button><button id="tP" class="'+(tab==='plus'?'on':'')+'">'+ic('sparkles',17,'#F59E0B')+' Habbly Plus<span class="plus-tag">NEW</span></button></div>'
@@ -545,7 +577,7 @@ function welcome(tab){
     $('joinS').onclick=function(){school($('cc').value.trim()||'10B-SPAN');};
   }else{
     b.innerHTML='<div class="perks">'
-     +'<div><i>'+ic('hourglass',20,'#0284C7')+'</i>A new lesson every day, +300 bonus if you finish within 10 h</div>'
+     +'<div><i>'+ic('hourglass',20,'#0284C7')+'</i>A new lesson every day, +300 bonus if you finish within 10 minutes</div>'
      +'<div><i>'+ic('chest',20,'#D97706')+'</i>Earn chests and a mystery box by learning</div>'
      +'<div><i>'+ic('balloon',20,'#EF4444')+'</i>Balloon Pop Duels and every Habbly game format</div></div>'
      +'<button class="btn white sso" data-m="Google">'+ICONS.g+'Continue with Google</button><div style="height:10px"></div>'
@@ -568,10 +600,10 @@ function otp(email){
   d.split('').forEach(function(c,i){setTimeout(function(){sp[i].textContent=c;sp[i].classList.add('f');tone(700+i*60,.06,'sine',.08);if(i===5){S.user=email.split('@')[0].replace(/[^a-z]/gi,'').slice(0,10)||'Maya';S.user=S.user.charAt(0).toUpperCase()+S.user.slice(1);setTimeout(trial,600);}},350+i*260);});
 }
 function trial(){
-  app.innerHTML='<div class="scr pad night" style="text-align:center">'
+  app.innerHTML='<div class="scr pad night lay" style="text-align:center">'+stars(30)
    +'<div style="margin-top:14px">'+chestHTML('legend','big idle')+'</div>'
    +'<div style="font-weight:900;font-size:26px;margin-top:16px;line-height:1.15">Hi '+esc(S.user)+', your 7 days of Plus start now</div>'
-   +'<p style="opacity:.8;font-weight:700;font-size:14.5px">Daily lessons, a 10-hour bonus window, chests and duels. No card needed for the trial.</p>'
+   +'<p style="opacity:.8;font-weight:700;font-size:14.5px">Daily lessons, a 10-minute bonus window, chests and duels. No card needed for the trial.</p>'
    +'<div style="text-align:left;background:rgba(255,255,255,.08);border-radius:16px;padding:12px 14px;font-weight:800;font-size:14px;margin:6px 0 16px">'+ic('checkc',16,'#4ADE80')+' Today: free<br>'+ic('bell',16,'#FDE047')+' Day 5: reminder email<br>'+ic('card',16,'#93C5FD')+' Day 8: proposed £5.99/month, or £39.99/year</div>'
    +'<div style="margin-top:auto"><button class="btn gold" id="st">Start my free week</button></div></div>';
   $('st').onclick=function(){sOpen();plusHome(true);};
@@ -599,11 +631,11 @@ function plusHome(first){
     return '<div class="slot full '+(ready?'ready':'')+'" data-i="'+i+'">'+chestHTML(c.t,ready?'idle':'')+'<span class="lab" id="sl'+i+'">'+(ready?'OPEN':fmt(c.left))+'</span></div>';
   }).join('');
   var days=['M','T','W','T','F','S','S'];
-  app.innerHTML='<div class="scr night">'
+  app.innerHTML='<div class="scr night lay home-in">'+stars(36)
    +'<div class="hud"><div class="av">'+esc(S.user.charAt(0)||'M')+'</div><div style="font-weight:900;font-size:14px;line-height:1.1">'+esc(S.user)+'<br><span style="font-size:11px;color:var(--gold)">PLUS · trial day 1</span></div>'
    +'<div style="margin-left:auto;display:flex;gap:6px"><div class="res" id="rFire"><span class="ic" style="background:#F97316">'+ic('flame',14,'#fff',2.6)+'</span>'+S.streak+'</div><div class="res" id="rCoin"><span class="ic">'+coinSVG(22)+'</span><span id="coinN">'+S.coins.toLocaleString()+'</span></div></div></div>'
    +(done?'<div class="window" style="background:linear-gradient(135deg,#16A34A,#22C55E)"><b>TODAY\'S LESSON</b><div class="t">Done '+ic('check',26,'#fff',3)+'</div><div style="font-weight:800;font-size:13px">+300 window bonus collected. Next lesson unlocks tomorrow at 07:00.</div></div>'
-         :'<div class="window"><b>'+ic('hourglass',13,'#fff',2.6)+' 10-HOUR LESSON WINDOW</b><div class="r"><div><div class="t" id="win">'+fmt(left)+'</div><div style="font-weight:800;font-size:13px">left to finish today\'s lesson</div></div><div class="bonus">BONUS<br><span style="font-size:22px">+300</span><br>+ Gold chest</div></div></div>')
+         :'<div class="window"><b>'+ic('hourglass',13,'#fff',2.6)+' 10-MINUTE LESSON WINDOW</b><div class="r"><div><div class="t" id="win">'+fmt(left)+'</div><div style="font-weight:800;font-size:13px">left to finish today\'s lesson</div></div><div class="bonus">BONUS<br><span style="font-size:22px">+300</span><br>+ Gold chest</div></div><div class="wtrack"><i id="wbar" style="width:100%"></i></div></div>')
    +'<div class="lessoncard"><div class="bal">'+balloonSVG(46)+'</div><div><h4>Balloon Pop Duel</h4><p>En la ciudad · 6 words · vs Ana</p></div><button class="go" id="play">'+(done?'Replay':'Play')+'</button></div>'
    +'<div class="sect">CHEST SLOTS</div><div class="slots">'+slots+'</div>'
    +'<button class="mystery '+(S.mystery?'':'locked')+'" id="mys"><div class="qbox">'+giftHTML(48,'')+'</div><div><div style="font-weight:900;font-size:15px">Mystery Box</div><div style="font-size:12.5px;opacity:.85">'+(S.mystery?'Ready! Tap to open':'Beat Ana in a duel to unlock')+'</div></div><div style="margin-left:auto;font-size:20px">'+(S.mystery?ic('unlock',20):ic('lock',20))+'</div></button>'
@@ -614,10 +646,10 @@ function plusHome(first){
   $('lo').onclick=function(){welcome('plus');};
   $('mys').onclick=function(){if(S.mystery)mystery();};
   app.querySelectorAll('.slot').forEach(function(el){el.onclick=function(){var c=S.chestSlots[+el.getAttribute('data-i')];if(!c)return;if(c.left<=0)openChest(+el.getAttribute('data-i'));else{el.animate([{transform:'rotate(-4deg)'},{transform:'rotate(4deg)'},{transform:'none'}],{duration:300});}};});
-  S.ticker=setInterval(function(){
-    var w=$('win');if(w)w.textContent=fmt((S.deadline-Date.now())/1000);
-    S.chestSlots.forEach(function(c,i){if(c&&c.left>0){c.left--;var l=$('sl'+i);if(l)l.textContent=fmt(c.left);}});
-  },1000);
+  var tick=function(){
+    var w=$('win');if(w){var L=(S.deadline-Date.now())/1000;w.textContent=fmt(L);w.classList.remove('tk');void w.offsetWidth;w.classList.add('tk');var wb=$('wbar');if(wb)wb.style.width=Math.max(0,L/600*100)+'%';var wc=w.closest('.window');if(wc){wc.classList.toggle('urgent',L>0&&L<60);wc.classList.toggle('closed',L<=0);}if(L>0&&L<11)tone(880,.05,'sine',.05);}
+    S.chestSlots.forEach(function(c,i){if(c&&c.left>0){c.left--;var l=$('sl'+i);if(l)l.textContent=fmt(c.left);if(c.left<=0&&!app.querySelector('.overlay')){var sl=l&&l.closest('.slot');if(sl){var r=sl.getBoundingClientRect();burst(r.left+r.width/2,r.top+r.height/2,['spark','star','coin'],18,90);sOpen();}setTimeout(function(){plusHome();},600);}}});
+  };tick();S.ticker=setInterval(tick,1000);
   if(first) confetti();
 }
 
@@ -658,12 +690,12 @@ function game(){
         if(answered)return;
         if(o===q.ok){
           answered=true;var y=b.y,prog=Math.max(0,1-(performance.now()-t0)/dur);
-          var pts=prog>.5?50:prog>.2?45:40; G.me+=pts;$('me').textContent=G.me;G.res.push(true);
+          var pts=prog>.5?50:prog>.2?45:40; G.me+=pts;$('me').textContent=G.me;G.res.push(true);G.combo=(G.combo||0)+1;bumpEl($('me'));buzz(20);
           el.classList.add('popped');sPop();burst(ev.clientX,ev.clientY,['spark','star','#F43F5E','#FBBF24'],12,90);
           var f=document.createElement('div');f.className='float';f.textContent='+'+pts;f.style.left=(b.x+30)+'px';f.style.top=y+'px';fld.appendChild(f);
-          banner(pts===50?'Lightning fast!':pts===45?'Nice!':'Just in time!');
+          banner(G.combo>1?'Combo ×'+G.combo+'!':pts===50?'Lightning fast!':pts===45?'Nice!':'Just in time!');if(G.combo>2)confetti();
           next();
-        }else{el.classList.add('wrong');sWrong();el.style.pointerEvents='none';}
+        }else{el.classList.add('wrong');sWrong();el.style.pointerEvents='none';G.combo=0;shakeScr();buzz(60);}
       };
     });
     // Ana (ghost) answers on her own clock
@@ -672,7 +704,7 @@ function game(){
     function frame(now){
       if(G.over)return;
       bs.forEach(function(b){var t=Math.max(0,now-t0-b.delay)/dur;b.y=H-t*(H+170);b.el.style.transform='translate('+(b.x+Math.sin((now/600)+b.wob)*8)+'px,'+b.y+'px)';});
-      if(!answered&&now-t0>dur+600){answered=true;G.res.push(false);sWrong();banner('Escaped! It was "'+q.ok+'"');next();return;}
+      if(!answered&&now-t0>dur+600){answered=true;G.res.push(false);sWrong();G.combo=0;shakeScr();banner('Escaped! It was "'+q.ok+'"');next();return;}
       if(!answered)G.raf=requestAnimationFrame(frame);
     }
     G.raf=requestAnimationFrame(frame);
@@ -680,7 +712,7 @@ function game(){
   }
   function finish(){
     dots();var inWin=Date.now()<S.deadline,win=G.me>G.ana;
-    if(!S.lessonDone){S.lessonDone=true;S.points+=G.me+(inWin?300:0);var free=S.chestSlots.indexOf(null);if(free>=0)S.chestSlots[free]={t:inWin?'gold':'silver',left:inWin?0:3*3600};}
+    if(!S.lessonDone){S.lessonDone=true;S.points+=G.me+(inWin?300:0);var free=S.chestSlots.indexOf(null);if(free>=0)S.chestSlots[free]={t:inWin?'gold':'silver',left:inWin?0:120};}
     if(win){S.mystery=true;S.bpdWins++;}
     setTimeout(function(){result(G,inWin,win);},500);
   }
@@ -689,15 +721,17 @@ function game(){
 function result(G,inWin,win){
   var correct=G.res.filter(Boolean).length;
   app.innerHTML='<div class="scr pad result"><div class="trophy">'+(win?ic('trophy',72,'#FBBF24',2):balloonSVG(64))+'</div>'
-   +'<div style="font-weight:900;font-size:26px;line-height:1.15">'+(win?'You beat Ana!':'Ana wins this one')+'</div>'
+   +'<div style="font-weight:900;font-size:26px;line-height:1.15">'+(win?'You beat Ana!':'Ana wins this one')+'</div><div class="stars3" id="st3"><span>'+starSVG(44)+'</span><span>'+starSVG(56)+'</span><span>'+starSVG(44)+'</span></div>'
    +'<div style="opacity:.8;font-weight:700">'+correct+' / '+POOL.length+' balloons popped · You '+G.me+' – '+G.ana+' Ana</div>'
    +'<div class="tally"><div><span>Lesson points (timer zones)</span><span>'+G.me+'</span></div>'
-   +'<div class="hi"><span>'+ic('hourglass',15,'#FBBF24')+' Finished inside 10-hour window</span><span>'+(inWin?'+300':'—')+'</span></div>'
-   +'<div><span>'+ic('chest',15)+' Chest earned</span><span>'+(inWin?'Gold, ready now':'Silver, unlocks in 3h')+'</span></div>'
+   +'<div class="hi"><span>'+ic('hourglass',15,'#FBBF24')+' Finished inside 10-minute window</span><span>'+(inWin?'+300':'—')+'</span></div>'
+   +'<div><span>'+ic('chest',15)+' Chest earned</span><span>'+(inWin?'Gold, ready now':'Silver, unlocks in 2 min')+'</span></div>'
    +'<div><span>'+ic('gift',15)+' Mystery Box</span><span>'+(win?'Unlocked!':'Beat Ana to unlock')+'</span></div>'
-   +'<div style="font-size:17px"><span><b>Total today</b></span><span class="hi"><b>'+(G.me+(inWin?300:0))+' pts</b></span></div></div>'
+   +'<div style="font-size:17px"><span><b>Total today</b></span><span class="hi"><b id="tot">0</b><b> pts</b></span></div></div>'
    +'<div style="margin-top:auto"><button class="btn gold" id="col">Collect rewards</button></div></div>';
   if(win)confetti();
+  var nS=correct>=6?3:correct>=4?2:correct>=1?1:0;app.querySelectorAll('#st3 span').forEach(function(s,k){if(k<nS)setTimeout(function(){s.classList.add('on');tone(660+k*220,.2,'triangle',.12);var r=s.getBoundingClientRect();burst(r.left+r.width/2,r.top+r.height/2,['spark','star'],8,60);},500+k*380);});
+  var tot=G.me+(inWin?300:0),t0=performance.now();setTimeout(function(){(function st(now){var k=Math.min(1,(now-t0-1600)/1000);if(k<0){requestAnimationFrame(st);return;}var e=$('tot');if(!e)return;e.textContent=Math.round(tot*k);if(k<1)requestAnimationFrame(st);else bumpEl(e);})(performance.now());},0);
   $('col').onclick=function(){var btn=$('col');burst(btn.getBoundingClientRect().left+btn.offsetWidth/2,btn.getBoundingClientRect().top,['star','spark','#FBBF24'],16,120);sOpen();setTimeout(function(){plusHome();var g=S.chestSlots.findIndex(function(c){return c&&c.left<=0;});if(g>=0)setTimeout(function(){openChest(g);},500);},400);};
 }
 
