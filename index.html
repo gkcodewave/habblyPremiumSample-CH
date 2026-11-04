@@ -359,6 +359,7 @@ h1 em{background:linear-gradient(90deg,var(--sky),var(--purple),#F97316,var(--sk
 .diwali b{display:block;font-size:14.5px}.diwali small{font-size:12px;opacity:.92;line-height:1.25;display:block}
 .diwali .go2{margin-left:auto;background:rgba(255,255,255,.2);border-radius:10px;padding:6px 9px;font-weight:900;font-size:12px;white-space:nowrap}
 .rewards.four{gap:7px}.rewards.four .rcard{width:78px;padding:10px 3px 9px}.rewards.four .ri{width:46px;height:46px}.rewards.four .rcard b{font-size:13.5px}
+.scr > *{flex-shrink:0}
 @media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;animation-iteration-count:1!important}}
 </style>
 </head>
@@ -650,18 +651,18 @@ function welcome(tab){
      +'<div style="height:10px"></div><button class="btn" id="otpB">Email me a code</button>'
      +'<p class="tiny" style="text-align:center;margin-top:10px">7-day free trial · proposed £5.99/month after · cancel anytime</p>';
     app.querySelectorAll('.sso').forEach(function(x){x.onclick=function(){signing(x.getAttribute('data-m'));};});
-    $('otpB').onclick=function(){otp($('em').value.trim()||'maya.r@gmail.com');};
+    $('otpB').onclick=function(){otp($('em').value.trim()||'govind@gmail.com');};
   }
 }
 function signing(m){
   app.innerHTML='<div class="scr pad" style="align-items:center;justify-content:center;text-align:center"><div class="logo">h</div><div style="font-weight:900;font-size:18px">Signing in with '+m+'…</div><p class="tiny">Prototype: no real account is used</p></div>';
-  S.user='Maya'; setTimeout(trial,1100);
+  S.user='Govind'; setTimeout(trial,1100);
 }
 function otp(email){
   app.innerHTML='<div class="scr pad"><div style="font-weight:900;font-size:22px;margin-top:20px">Check your email</div><p style="color:#6B7280;font-weight:700;font-size:14px;margin:4px 0">We sent a 6-digit code to <b>'+esc(email)+'</b></p>'
    +'<div class="otp" id="otp">'+'<span></span>'.repeat(6)+'</div><p class="tiny" style="text-align:center">Filling the demo code for you…</p></div>';
   var d='427193',sp=app.querySelectorAll('#otp span');
-  d.split('').forEach(function(c,i){setTimeout(function(){sp[i].textContent=c;sp[i].classList.add('f');tone(700+i*60,.06,'sine',.08);if(i===5){S.user=email.split('@')[0].replace(/[^a-z]/gi,'').slice(0,10)||'Maya';S.user=S.user.charAt(0).toUpperCase()+S.user.slice(1);setTimeout(trial,600);}},350+i*260);});
+  d.split('').forEach(function(c,i){setTimeout(function(){sp[i].textContent=c;sp[i].classList.add('f');tone(700+i*60,.06,'sine',.08);if(i===5){S.user=email.split('@')[0].replace(/[^a-z]/gi,'').slice(0,10)||'Govind';S.user=S.user.charAt(0).toUpperCase()+S.user.slice(1);setTimeout(trial,600);}},350+i*260);});
 }
 function trial(){
   app.innerHTML='<div class="scr pad night lay" style="text-align:center">'+stars(30)
@@ -696,19 +697,17 @@ function plusHome(first){
   }).join('');
   var days=['M','T','W','T','F','S','S'];
   app.innerHTML='<div class="scr night lay home-in">'+stars(36)
-   +'<div class="hud"><div class="av">'+esc(S.user.charAt(0)||'M')+'</div><div style="font-weight:900;font-size:14px;line-height:1.1">'+esc(S.user)+'<br><span style="font-size:11px;color:var(--gold)">PLUS · trial day 1</span></div>'
+   +'<div class="hud"><div class="av">'+esc(S.user.charAt(0)||'G')+'</div><div style="font-weight:900;font-size:14px;line-height:1.1">'+esc(S.user)+'<br><span style="font-size:11px;color:var(--gold)">PLUS · trial day 1</span></div>'
    +'<div style="margin-left:auto;display:flex;gap:6px"><div class="res" id="rFire"><span class="ic" style="background:#F97316">'+ic('flame',14,'#fff',2.6)+'</span>'+S.streak+'</div><div class="res" id="rCoin"><span class="ic">'+coinSVG(22)+'</span><span id="coinN">'+S.coins.toLocaleString()+'</span></div></div></div>'
    +(done?'<div class="window" style="background:linear-gradient(135deg,#16A34A,#22C55E)"><b>TODAY\'S LESSON</b><div class="t">Done '+ic('check',26,'#fff',3)+'</div><div style="font-weight:800;font-size:13px">+300 window bonus collected. Next lesson unlocks tomorrow at 07:00.</div></div>'
          :'<div class="window"><b>'+ic('hourglass',13,'#fff',2.6)+' 10-MINUTE LESSON WINDOW</b><div class="r"><div><div class="t" id="win">'+fmt(left)+'</div><div style="font-weight:800;font-size:13px">left to finish today\'s lesson</div></div><div class="bonus">BONUS<br><span style="font-size:22px">+300</span><br>+ Gold chest</div></div><div class="wtrack"><i id="wbar" style="width:100%"></i></div></div>')
-   +'<button class="diwali" id="dw">'+diyaSVG(40)+'<div><b>Diwali Festival week</b><small>Every chest drops a bonus reward this week</small></div><span class="go2">Celebrate</span></button>'
-   +'<div class="lessoncard"><div class="bal">'+balloonSVG(46)+'</div><div><h4>Balloon Pop Duel</h4><p>En la ciudad · 6 words · vs Ana</p></div><button class="go" id="play">'+(done?'Replay':'Play')+'</button></div>'
+      +'<div class="lessoncard"><div class="bal">'+balloonSVG(46)+'</div><div><h4>Balloon Pop Duel</h4><p>En la ciudad · 6 words · vs Ana</p></div><button class="go" id="play">'+(done?'Replay':'Play')+'</button></div>'
    +'<div class="sect">CHEST SLOTS</div><div class="slots">'+slots+'</div>'
    +'<button class="mystery '+(S.mystery?'':'locked')+'" id="mys"><div class="qbox">'+giftHTML(48,'')+'</div><div><div style="font-weight:900;font-size:15px">Mystery Box</div><div style="font-size:12.5px;opacity:.85">'+(S.mystery?'Ready! Tap to open':'Beat Ana in a duel to unlock')+'</div></div><div style="margin-left:auto;font-size:20px">'+(S.mystery?ic('unlock',20):ic('lock',20))+'</div></button>'
    +'<div class="sect">STREAK</div><div class="streak">'+days.map(function(d,i){return '<div class="'+(i<S.streak?'on':'')+'"><span>'+(i<S.streak?ic('flame',18,'#FB923C'):'·')+'</span>'+d+'</div>';}).join('')+'</div>'
    +'<div style="padding:0 14px 18px"><button class="link" id="lo" style="color:#93C5FD">Sign out</button></div>'
    +'</div>';
   $('play').onclick=function(){game();};
-  $('dw').onclick=function(){PH.show(7,true);};
   $('lo').onclick=function(){welcome('plus');};
   $('mys').onclick=function(){if(S.mystery)mystery();};
   app.querySelectorAll('.slot').forEach(function(el){el.onclick=function(){var c=S.chestSlots[+el.getAttribute('data-i')];if(!c)return;if(c.left<=0)openChest(+el.getAttribute('data-i'));else{el.animate([{transform:'rotate(-4deg)'},{transform:'rotate(4deg)'},{transform:'none'}],{duration:300});}};});
@@ -733,7 +732,7 @@ function game(){
   clearTick();
   var G={r:0,me:0,ana:0,res:[],raf:null,over:false};
   app.innerHTML='<div class="scr sky" style="overflow:hidden">'
-   +'<div class="duel"><div class="pl"><span class="a" style="background:var(--sky)">'+esc(S.user.charAt(0)||'M')+'</span>You<span class="s" id="me">0</span></div><span class="vs">VS</span><div class="pl"><span class="a" style="background:#EC4899">A</span>Ana '+ic('ghost',15,'#EC4899')+'<span class="s" id="ana">0</span></div></div>'
+   +'<div class="duel"><div class="pl"><span class="a" style="background:var(--sky)">'+esc(S.user.charAt(0)||'G')+'</span>You<span class="s" id="me">0</span></div><span class="vs">VS</span><div class="pl"><span class="a" style="background:#EC4899">A</span>Ana '+ic('ghost',15,'#EC4899')+'<span class="s" id="ana">0</span></div></div>'
    +'<div class="word"><div class="hint">TAP THE MEANING</div><div class="w" id="w">…</div><button id="say" aria-label="Listen">'+ic('volume',18,'#0284C7')+'</button></div>'
    +'<div class="rounds" id="rd">'+POOL.map(function(){return '<i></i>';}).join('')+'</div>'
    +'<div class="field" id="fld"><div class="cloud" style="width:90px;height:26px;top:40px;animation-duration:22s"></div><div class="cloud" style="width:60px;height:18px;top:180px;animation-duration:30s;animation-delay:-12s"></div><div class="cloud" style="width:110px;height:30px;top:320px;animation-duration:26s;animation-delay:-6s"></div></div>'
